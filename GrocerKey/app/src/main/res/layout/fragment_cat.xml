@@ -9,6 +9,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activities.MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="35sp"
+        android:textColor="@color/colorText"
+        android:text="text"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/cat_text_id"/>
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/cat_image_view_id"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
