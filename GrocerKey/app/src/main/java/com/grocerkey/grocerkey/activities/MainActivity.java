@@ -11,6 +11,8 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import com.grocerkey.grocerkey.R;
+import com.grocerkey.grocerkey.fragments.CatFrag;
+import com.grocerkey.grocerkey.fragments.DogFrag;
 import com.grocerkey.grocerkey.fragments.HelloFrag;
 
 public class MainActivity extends AppCompatActivity {
@@ -71,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     return HelloFrag.newInstance();
                 case 1:
-                    return HelloFrag.newInstance();
+                    return CatFrag.newInstance();
                 case 2:
-                    return HelloFrag.newInstance();
+                    return DogFrag.newInstance();
             }
             return  null;
         }
