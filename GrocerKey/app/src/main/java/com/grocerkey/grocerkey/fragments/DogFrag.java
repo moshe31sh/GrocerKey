@@ -57,7 +57,7 @@ public class DogFrag extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         List<Dog> dogList = Utils.createDogList(AppConsts.dogsName);
-        dogAdapter = new DogAdapter(dogList);
+        dogAdapter = new DogAdapter(getContext() ,dogList);
         mRecyclerView.setAdapter(dogAdapter);
     }
 

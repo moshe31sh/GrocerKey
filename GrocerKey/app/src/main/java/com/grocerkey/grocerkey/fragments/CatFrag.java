@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.grocerkey.grocerkey.R;
 import com.grocerkey.grocerkey.utiles.AppConsts;
 import com.grocerkey.grocerkey.utiles.Utils;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -56,21 +57,27 @@ public class CatFrag extends Fragment {
         this.tvKitten = (TextView) rootView.findViewById(R.id.cat_text_id);
         this.ivCat = (ImageView) rootView.findViewById(R.id.cat_image_view_id);
         this.tvKitten.setText(AppConsts.cuteKitten);
-        new DownloadImageTask().execute(AppConsts.catPicUrl);
+
+        //**********using picasso*************///
+
+        Picasso.with(getContext()).load(AppConsts.catPicUrl).into(this.ivCat);
+
+        // new DownloadImageTask().execute(AppConsts.catPicUrl);
+
 
     }
 
 
-    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            return Utils.download_Image(strings[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            ivCat.setImageBitmap(bitmap);
-        }
-    }
+//    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+//
+//        @Override
+//        protected Bitmap doInBackground(String... strings) {
+//            return Utils.download_Image(strings[0]);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Bitmap bitmap) {
+//            ivCat.setImageBitmap(bitmap);
+//        }
+//    }
 }

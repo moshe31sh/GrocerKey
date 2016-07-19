@@ -1,5 +1,6 @@
 package com.grocerkey.grocerkey.adapters;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.grocerkey.grocerkey.R;
 import com.grocerkey.grocerkey.common.Dog;
 import com.grocerkey.grocerkey.utiles.AppConsts;
 import com.grocerkey.grocerkey.utiles.Utils;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -26,13 +28,16 @@ import java.util.List;
  */
 public class DogAdapter  extends RecyclerView.Adapter<DogAdapter.ViewHolder>{
     private List<Dog> dogs;
+    private Context context;
 
     /**
      * Ctor
      * @param list - list of object to add
      */
-    public DogAdapter(List<Dog> list){
+    public DogAdapter(Context context , List<Dog> list)
+    {
         this.dogs = list;
+        this.context = context;
     }
 
     @Override
@@ -45,7 +50,11 @@ public class DogAdapter  extends RecyclerView.Adapter<DogAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
     Dog dog = dogs.get(position);
     holder.tvDogName.setText(dog.getName());
-    new DownloadImageTask(holder.ivDog).execute(AppConsts.dogPicUrl[position]);
+
+        //*****using picasso*******///
+
+        Picasso.with(context).load(AppConsts.dogPicUrl[position]).resize(90,90).into(holder.ivDog);
+  //  new DownloadImageTask(holder.ivDog).execute(AppConsts.dogPicUrl[position]);
     }
 
     @Override
@@ -67,25 +76,25 @@ public class DogAdapter  extends RecyclerView.Adapter<DogAdapter.ViewHolder>{
     }
 
 
-    /**
-     * this method receive the specific image view of the current dog in the list
-     */
-    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView currentDog;
-        public DownloadImageTask(ImageView currentDog){
-            this.currentDog = currentDog;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            Log.i("dog", "start");
-            return Utils.download_Image(strings[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            Log.i("dog", "end");
-            currentDog.setImageBitmap(bitmap);
-        }
-    }
+//    /**
+//     * this method receive the specific image view of the current dog in the list
+//     */
+//    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+//        ImageView currentDog;
+//        public DownloadImageTask(ImageView currentDog){
+//            this.currentDog = currentDog;
+//        }
+//
+//        @Override
+//        protected Bitmap doInBackground(String... strings) {
+//            Log.i("dog", "start");
+//            return Utils.download_Image(strings[0]);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Bitmap bitmap) {
+//            Log.i("dog", "end");
+//            currentDog.setImageBitmap(bitmap);
+//        }
+//    }
 }
