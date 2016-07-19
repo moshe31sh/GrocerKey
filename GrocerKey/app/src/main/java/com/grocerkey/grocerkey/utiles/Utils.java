@@ -3,9 +3,13 @@ package com.grocerkey.grocerkey.utiles;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.grocerkey.grocerkey.common.Dog;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by moshe on 19-07-16.
@@ -14,7 +18,7 @@ import java.net.URL;
 /**
  * This class is for function , logic ,etc
  */
-public final class Utiles {
+public final class Utils {
 
     /**
      * Download pic from web
@@ -34,4 +38,13 @@ public final class Utiles {
         }catch(Exception e){}
         return bmp;
     }
+
+    public static List<Dog> createDogList(String [] nameList){
+        List<Dog> dogsList = new ArrayList<Dog>(nameList.length);
+        for(int i = 0 ; i < nameList.length ; i++){
+            dogsList.add(new Dog(nameList[i]));
+        }
+        return dogsList;
+    }
+
 }

@@ -11,7 +11,8 @@ package com.grocerkey.grocerkey.utiles;
 public final class AppConsts {
     public static final String helloWorld = "Hello,World!";
     public static final String cuteKitten = "A Very Cute Kitten:";
-
+    public static final String [] dogsName = {"Joni" , "Sambo" , "Sansi" , "Jack" , "Lula","Tuli",
+    "Gordon" , "Toy"};
 
     /***URLS****/
 

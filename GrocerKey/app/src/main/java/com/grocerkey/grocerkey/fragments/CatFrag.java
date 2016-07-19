@@ -2,7 +2,6 @@ package com.grocerkey.grocerkey.fragments;
 
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 
 import com.grocerkey.grocerkey.R;
 import com.grocerkey.grocerkey.utiles.AppConsts;
-import com.grocerkey.grocerkey.utiles.Utiles;
+import com.grocerkey.grocerkey.utiles.Utils;
 
 
 /**
@@ -57,7 +56,7 @@ public class CatFrag extends Fragment {
         this.tvKitten = (TextView) rootView.findViewById(R.id.cat_text_id);
         this.ivCat = (ImageView) rootView.findViewById(R.id.cat_image_view_id);
         this.tvKitten.setText(AppConsts.cuteKitten);
-        Bitmap bmp = Utiles.download_Image(AppConsts.catPicUrl);
+        Bitmap bmp = Utils.download_Image(AppConsts.catPicUrl);
         new DownloadImageTask().execute(AppConsts.catPicUrl);
 
     }
@@ -69,7 +68,7 @@ public class CatFrag extends Fragment {
         @Override
         protected Bitmap doInBackground(String... strings) {
             Log.d("do" ,"connect");
-            return Utiles.download_Image(strings[0]);
+            return Utils.download_Image(strings[0]);
         }
 
         @Override
