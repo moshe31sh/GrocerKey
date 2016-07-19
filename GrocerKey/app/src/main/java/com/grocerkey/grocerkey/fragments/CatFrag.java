@@ -56,7 +56,6 @@ public class CatFrag extends Fragment {
         this.tvKitten = (TextView) rootView.findViewById(R.id.cat_text_id);
         this.ivCat = (ImageView) rootView.findViewById(R.id.cat_image_view_id);
         this.tvKitten.setText(AppConsts.cuteKitten);
-        Bitmap bmp = Utils.download_Image(AppConsts.catPicUrl);
         new DownloadImageTask().execute(AppConsts.catPicUrl);
 
     }
@@ -64,16 +63,13 @@ public class CatFrag extends Fragment {
 
     public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
 
-
         @Override
         protected Bitmap doInBackground(String... strings) {
-            Log.d("do" ,"connect");
             return Utils.download_Image(strings[0]);
         }
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            Log.d("do" ,"Done");
             ivCat.setImageBitmap(bitmap);
         }
     }

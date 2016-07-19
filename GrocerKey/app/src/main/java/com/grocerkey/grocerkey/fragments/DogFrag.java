@@ -60,4 +60,5 @@ public class DogFrag extends Fragment {
         dogAdapter = new DogAdapter(dogList);
         mRecyclerView.setAdapter(dogAdapter);
     }
+
 }

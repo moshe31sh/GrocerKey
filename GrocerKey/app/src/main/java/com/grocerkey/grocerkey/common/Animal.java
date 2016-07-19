@@ -12,7 +12,6 @@ import android.graphics.Bitmap;
  */
 public abstract class Animal {
     String name;
-    Bitmap animalPic;
 
     /**
      * Default Ctor
@@ -20,19 +19,8 @@ public abstract class Animal {
     public Animal() {
     }
 
-    /**
-     * Ctor
-     * @param name - animal name
-     * @param animalPic - animal pic
-     */
-    public Animal(String name , Bitmap animalPic){
-        setName(name);
-        setAnimalPic(animalPic);
-    }
-
     public Animal(String name){
         setName(name);
-        setAnimalPic(null);
     }
 
     /**
@@ -51,19 +39,5 @@ public abstract class Animal {
         this.name = name;
     }
 
-    /**
-     * Animal pic getter
-     * @return animal pic in bitmap format
-     */
-    public Bitmap getAnimalPic() {
-        return animalPic;
-    }
 
-    /**
-     * Animal pic setter
-     * @param animalPic - animal pic bitmap format
-     */
-    public void setAnimalPic(Bitmap animalPic) {
-        this.animalPic = animalPic;
-    }
 }
