@@ -15,7 +15,7 @@ public final class AppConsts {
 
     /***URLS****/
 
-    public static final String catPicUrl = "www.sfgov2.org/ftp/uploadedimages/acc/Adoption_Center/Foster%20Kitten%2012007.jpg";
+    public static final String catPicUrl = "http://www.sfgov2.org/ftp/uploadedimages/acc/Adoption_Center/Foster%20Kitten%2012007.jpg";
 
 
 

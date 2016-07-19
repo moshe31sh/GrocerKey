@@ -3,9 +3,11 @@ package com.grocerkey.grocerkey.fragments;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import android.widget.TextView;
 
 import com.grocerkey.grocerkey.R;
 import com.grocerkey.grocerkey.utiles.AppConsts;
-import com.grocerkey.grocerkey.utiles.DownloadImageTask;
+import com.grocerkey.grocerkey.utiles.Utiles;
 
 
 /**
@@ -31,6 +33,7 @@ public class CatFrag extends Fragment {
 
     /**
      * Create fragment instance
+     *
      * @return - fragment
      */
     public static CatFrag newInstance() {
@@ -50,18 +53,29 @@ public class CatFrag extends Fragment {
     /**
      * This method init vars
      */
-    public void init(){
+    public void init() {
         this.tvKitten = (TextView) rootView.findViewById(R.id.cat_text_id);
         this.ivCat = (ImageView) rootView.findViewById(R.id.cat_image_view_id);
         this.tvKitten.setText(AppConsts.cuteKitten);
-        new DownloadImageTask(ivCat).execute(AppConsts.catPicUrl);
+        Bitmap bmp = Utiles.download_Image(AppConsts.catPicUrl);
+        new DownloadImageTask().execute(AppConsts.catPicUrl);
 
     }
 
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        this.cat = new Cat();
-//       // Bitmap bitmap = null;
-//    }
+
+    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            Log.d("do" ,"connect");
+            return Utiles.download_Image(strings[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            Log.d("do" ,"Done");
+            ivCat.setImageBitmap(bitmap);
+        }
+    }
 }
